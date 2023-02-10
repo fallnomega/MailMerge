@@ -1,16 +1,12 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# get list of names
+names = []
+with open("Input/Names/invited_names.txt") as file:
+    names = file.read().splitlines()
+with open("Input/Letters/starting_letter.txt") as letter:
+    content = letter.read()
+for x in names:
+    temp_content = content
+    temp_content = temp_content.replace("[name]", x)
+    new_letter = open(f"Output/ReadyToSend/{x}.txt", "w")
+    new_letter.write(temp_content)
+    new_letter.close()
